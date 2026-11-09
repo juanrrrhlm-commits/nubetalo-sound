@@ -337,28 +337,70 @@ void FxTheme::drawPopupMenuItem(Graphics& g, const juce::Rectangle<int>& area, b
 								bool is_highlighted, bool is_ticked, bool has_submenu, const String& text,
 								const String& shortcut_key_text, const Drawable* icon, const Colour* text_colour)
 {
-	LookAndFeel_V4::drawPopupMenuItem(g, area, is_separator, is_active, is_highlighted||is_ticked, is_ticked,
-										has_submenu, text, shortcut_key_text, icon, text_colour);
-	
+	// Menú Nubetalo: sin bloque azul ni recuadro; selección tenue con barra lateral y punto de marca.
+	const auto accent = FXCOL(SliderTrack);
+	const auto r = area.toFloat();
+
+	if (is_separator)
+	{
+		g.setColour(FXCOL(Outline).withAlpha(0.55f));
+		g.fillRect(r.getX() + 14.0f, r.getCentreY(), r.getWidth() - 28.0f, 1.0f);
+		return;
+	}
+
+	const auto row = r.reduced(4.0f, 1.5f);
+	if (is_highlighted && is_active)
+	{
+		g.setColour(accent.withAlpha(0.16f));
+		g.fillRoundedRectangle(row, 8.0f);
+		g.setColour(accent);
+		g.fillRoundedRectangle(row.getX() + 3.0f, row.getCentreY() - 7.0f, 3.0f, 14.0f, 1.5f);
+	}
+
+	const float alpha = is_active ? 1.0f : 0.4f;
 	if (is_ticked)
 	{
-		g.setColour(findColour(PopupMenu::textColourId).withAlpha(1.0f));
-		g.drawRect(area.toFloat());
+		g.setColour(accent.withAlpha(alpha));
+		g.fillEllipse(row.getX() + 13.0f, row.getCentreY() - 3.0f, 6.0f, 6.0f);
 	}
+
+	g.setColour((text_colour != nullptr ? *text_colour : findColour(PopupMenu::textColourId)).withAlpha(alpha));
+	g.setFont(is_ticked ? Font(font_600_).withHeight(15.0f) : getPopupMenuFont());
+	const float right_pad = has_submenu ? 30.0f : 14.0f;
+	g.drawText(text, juce::Rectangle<float>(row.getX() + 28.0f, row.getY(), row.getWidth() - 28.0f - right_pad, row.getHeight()),
+			   Justification::centredLeft, true);
+
+	if (has_submenu)
+	{
+		const float cx = row.getRight() - 16.0f, cy = row.getCentreY();
+		Path chevron;
+		chevron.startNewSubPath(cx - 2.5f, cy - 4.5f);
+		chevron.lineTo(cx + 2.5f, cy);
+		chevron.lineTo(cx - 2.5f, cy + 4.5f);
+		g.setColour(findColour(PopupMenu::textColourId).withAlpha(0.65f * alpha));
+		g.strokePath(chevron, PathStrokeType(1.6f, PathStrokeType::curved, PathStrokeType::rounded));
+	}
+}
+
+void FxTheme::drawPopupMenuSectionHeader(Graphics& g, const juce::Rectangle<int>& area, const String& text)
+{
+	g.setColour(findColour(PopupMenu::textColourId).withAlpha(0.5f));
+	g.setFont(Font(font_400_).withHeight(12.5f));
+	g.drawText(text, area.toFloat().withTrimmedLeft(32.0f).withTrimmedTop(4.0f), Justification::centredLeft, true);
 }
 
 Font FxTheme::getPopupMenuFont()
 {
-	return Font(font_600_).withHeight(17.0f);
+	return Font(font_400_).withHeight(15.0f);
 }
 
 void FxTheme::drawPopupMenuBackground(Graphics& g, int width, int height)
 {
 	auto r = juce::Rectangle<float>(0.0f, 0.0f, (float)width, (float)height).reduced(1.0f);
 	g.setColour(FXCOL(WindowBackground));
-	g.fillRoundedRectangle(r, 18.0f);
-	g.setColour(FXCOL(Outline).brighter(0.2f));
-	g.drawRoundedRectangle(r.reduced(0.5f), 18.0f, 1.0f);
+	g.fillRoundedRectangle(r, 14.0f);
+	g.setColour(FXCOL(SliderTrack).withAlpha(0.28f));
+	g.drawRoundedRectangle(r.reduced(0.5f), 14.0f, 1.0f);
 }
 
 void FxTheme::preparePopupMenuWindow(Component& new_window)

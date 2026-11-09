@@ -68,6 +68,7 @@ public:
 	void drawPopupMenuItem(Graphics& g, const juce::Rectangle<int>& area, bool is_separator, bool is_active,
 						   bool is_highlighted, bool is_ticked, bool has_submenu, const String& text,
 						   const String& shortcut_key_text, const Drawable* icon, const Colour* text_colour) override;
+	void drawPopupMenuSectionHeader(Graphics& g, const juce::Rectangle<int>& area, const String& text) override;
 	Font getPopupMenuFont() override;
 	void preparePopupMenuWindow(Component& new_window) override;
 	void drawPopupMenuBackground(Graphics& g, int width, int height) override;

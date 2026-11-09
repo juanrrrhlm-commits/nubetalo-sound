@@ -43,6 +43,43 @@ FxSystemTrayView::FxSystemTrayView()
     taskbar_created_message_ = RegisterWindowMessage(TEXT("TaskbarCreated"));
 
     addIcon();
+
+#ifndef NUBETALO_RELEASE
+    // Developer aid: FXSOUND_TRAYMENU=1 opens the tray menu by itself so it can be photographed.
+    auto tray_png = SystemStats::getEnvironmentVariable("FXSOUND_TRAYMENU", "");
+    if (tray_png.isNotEmpty())
+        Timer::callAfterDelay(2500, [tray_png]() {
+            struct Row { const char* text; bool sep, active, hl, tick, sub; };
+            static const Row rows[] = {
+                {"Abrir", 0, 1, 0, 0, 0}, {"Apagar", 0, 1, 0, 0, 0}, {"Selección de preajuste", 0, 1, 0, 0, 1},
+                {"", 1, 1, 0, 0, 0}, {"@Seleccionar dispositivo de reproducción", 0, 1, 0, 0, 0},
+                {"Auriculares (AirPods Pro de Juan)", 0, 1, 0, 1, 0}, {"Altavoces (Realtek(R) Audio)", 0, 1, 1, 0, 0},
+                {"", 1, 1, 0, 0, 0}, {"Ajustes", 0, 1, 0, 0, 0}, {"Tema", 0, 1, 0, 0, 1}, {"Siempre arriba", 0, 1, 0, 0, 0},
+                {"Donar", 0, 1, 0, 0, 0}, {"Salir", 0, 1, 0, 0, 0} };
+            struct Panel : Component {
+                void paint(Graphics& g) override {
+                    auto& lf = getLookAndFeel();
+                    lf.drawPopupMenuBackground(g, getWidth(), getHeight());
+                    int y = 8;
+                    for (auto& r : rows) {
+                        const int h = r.sep ? 12 : 30;
+                        juce::Rectangle<int> a(8, y, getWidth() - 16, h);
+                        if (r.text[0] == '@') {
+                            if (auto* t = dynamic_cast<FxTheme*>(&lf)) t->drawPopupMenuSectionHeader(g, a, String(CharPointer_UTF8(r.text + 1)));
+                        } else
+                            lf.drawPopupMenuItem(g, a, r.sep, r.active, r.hl, r.tick, r.sub, String(CharPointer_UTF8(r.text)), {}, nullptr, nullptr);
+                        y += h;
+                    }
+                }
+            } panel;
+            panel.setSize(340, 8 + 30 * 10 + 12 * 2 + 8);
+            auto image = panel.createComponentSnapshot(panel.getLocalBounds(), true, 1.0f);
+            File file(tray_png); file.deleteFile();
+            FileOutputStream stream(file);
+            if (stream.openedOk()) PNGImageFormat().writeImageToStream(image, stream);
+            JUCEApplication::quit();
+        });
+#endif
 }
 
 FxSystemTrayView::~FxSystemTrayView()
@@ -349,7 +386,7 @@ void FxSystemTrayView::addOutputDeviceMenu(PopupMenu* context_menu)
     auto id = OUTPUT_MENU_ID_START;
     for (auto device : output_devices)
     {
-        PopupMenu::Item menu_item(getTruncatedText(device.deviceFriendlyName.c_str(), 30));
+        PopupMenu::Item menu_item(getTruncatedText(device.deviceFriendlyName.c_str(), 40));
         menu_item.setID(id);
         if (device.deviceNumChannel < 2)
         {
