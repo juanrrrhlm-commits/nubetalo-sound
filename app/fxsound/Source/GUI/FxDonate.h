@@ -7,7 +7,7 @@ namespace FxDonate
 {
 	inline String url()
 	{
-		return "https://www.paypal.me/Nubetalo";
+		return "https://www.paypal.com/donate/?business=juan.rodriguez.roman777%40gmail.com&currency_code=USD&item_name=Nubetalo+Sound";
 	}
 
 	inline bool enabled()

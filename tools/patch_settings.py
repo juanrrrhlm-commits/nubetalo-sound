@@ -329,7 +329,7 @@ FxSettingsDialog::HelpSettingsPane::HelpSettingsPane() :
 	mail_row_(FxSettingRow::Kind::Link, "Write to support", FxSupport::email()),
 	bug_row_(FxSettingRow::Kind::Link, "Report a problem", "Opens an email with your version and system"),
 	copy_row_(FxSettingRow::Kind::Link, "Copy system information", "To paste it in an email or a report"),
-	donate_row_(FxSettingRow::Kind::Link, "Donate", "paypal.me/Nubetalo"),
+	donate_row_(FxSettingRow::Kind::Link, "Donate", "PayPal"),
 	license_row_(FxSettingRow::Kind::Link, "License", "GNU Affero General Public License v3"),
 	notices_row_(FxSettingRow::Kind::Link, "Third-party notices", "FxSound, JUCE and IBM Plex Sans")
 {

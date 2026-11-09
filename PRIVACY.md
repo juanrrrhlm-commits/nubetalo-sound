@@ -14,7 +14,7 @@ Para borrar todo, desinstala el programa y elimina esas carpetas.
 ## Cuándo se abre algo externo
 Solo cuando tú lo pides con un clic:
 - **Escribir a soporte / Reportar un problema:** abre tu programa de correo con un mensaje dirigido a `juanrrrhlm@gmail.com`. El reporte incluye versión de la app, versión de Windows e idioma; no incluye nombres de dispositivos ni rutas. Tú decides si lo envías.
-- **Donar:** abre `paypal.me/Nubetalo` en tu navegador. El pago lo gestiona PayPal.
+- **Donar:** abre la página de donaciones de PayPal en tu navegador. El pago lo gestiona PayPal.
 
 ## Audio
 El audio se procesa en tu equipo, en tiempo real, y no se graba ni se transmite. El espectro del visualizador se calcula localmente y no se guarda.

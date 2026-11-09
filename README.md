@@ -8,7 +8,7 @@ Gratis · sin cuentas · sin anuncios · sin telemetría · código abierto</p>
   <a href="../../releases/latest"><b>⬇ Descargar para Windows</b></a> ·
   <a href="#solución-de-problemas">Solución de problemas</a> ·
   <a href="#legal">Legal</a> ·
-  <a href="https://www.paypal.me/Nubetalo">♥ Donar</a>
+  <a href="https://www.paypal.com/donate/?business=juan.rodriguez.roman777%40gmail.com&currency_code=USD&item_name=Nubetalo+Sound">♥ Donar</a>
 </p>
 
 ---
@@ -86,4 +86,4 @@ tools\make_installer.ps1   # instalador (necesita Inno Setup 6)
 ```
 
 ## Apoya el proyecto
-Si te gusta, comparte la app o [dona un café](https://www.paypal.me/Nubetalo). Lo recaudado se usará, por este orden, en la firma de código (para que Windows deje de avisar) y en un controlador de audio propio.
+Si te gusta, comparte la app o [dona un café](https://www.paypal.com/donate/?business=juan.rodriguez.roman777%40gmail.com&currency_code=USD&item_name=Nubetalo+Sound). Lo recaudado se usará, por este orden, en la firma de código (para que Windows deje de avisar) y en un controlador de audio propio.
