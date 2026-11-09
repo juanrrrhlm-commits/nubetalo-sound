@@ -1,0 +1,18 @@
+[C1] Cambio de salida con audio sonando:
+  inicio (AirPods)                         AirPods   -9,7 | Altavoces -200,0 | virtual -200,0 | default=Altavoces (2- FxSound Audio Enhancer)
+  -> altavoces (vuelta 1)                  AirPods -200,0 | Altavoces -200,0 | virtual -200,0 | default=Altavoces (2- FxSound Audio Enhancer)
+  -> AirPods (vuelta 1)                    AirPods -200,0 | Altavoces -200,0 | virtual -200,0 | default=Altavoces (2- FxSound Audio Enhancer)
+  -> altavoces (vuelta 2)                  AirPods -200,0 | Altavoces -200,0 | virtual -200,0 | default=Altavoces (2- FxSound Audio Enhancer)
+  -> AirPods (vuelta 2)                    AirPods -200,0 | Altavoces -200,0 | virtual -200,0 | default=Altavoces (2- FxSound Audio Enhancer)
+  -> altavoces (vuelta 3)                  AirPods -200,0 | Altavoces -200,0 | virtual -200,0 | default=Altavoces (2- FxSound Audio Enhancer)
+  -> AirPods (vuelta 3)                    AirPods  -72,9 | Altavoces -200,0 | virtual -200,0 | default=Altavoces (2- FxSound Audio Enhancer)
+
+[C2] Cambios rapidos (sin esperar) y luego medir:
+  tras 4 ida y vuelta rapidas (debe ser AirPods) AirPods  -47,8 | Altavoces -200,0 | virtual -200,0 | default=Altavoces (2- FxSound Audio Enhancer)
+
+[C3] Apagar y encender con el mismo reproductor:
+  power=0                                  AirPods -200,0 | Altavoces -200,0 | virtual -200,0 | default=Auriculares (AirPods Pro de Juan)
+  power=1 (3 s despues)                    AirPods -200,0 | Altavoces -200,0 | virtual -200,0 | default=Altavoces (2- FxSound Audio Enhancer)
+  power=1 con reproductor nuevo            AirPods   -9,7 | Altavoces -200,0 | virtual -200,0 | default=Altavoces (2- FxSound Audio Enhancer)
+
+Listo.

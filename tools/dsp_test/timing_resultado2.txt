@@ -1,0 +1,25 @@
+[T1] Un cambio AirPods -> Altavoces, midiendo cada ~2.5 s:
+  t= 3,4s antes (AirPods)        AirPods   -9,7 | Realtek -200,0 | virtual  -20,8
+  t= 3,9s tras cambiar a altavoces AirPods -200,0 | Realtek  -89,7 | virtual -200,0
+  t= 8,7s tras cambiar a altavoces AirPods -200,0 | Realtek -200,0 | virtual -200,0
+  t=12,6s tras cambiar a altavoces AirPods -200,0 | Realtek -200,0 | virtual -200,0
+  t=17,0s tras cambiar a altavoces AirPods -200,0 | Realtek -200,0 | virtual -200,0
+  t=20,9s tras cambiar a altavoces AirPods -200,0 | Realtek  -33,3 | virtual  -40,9
+  t=24,8s tras cambiar a altavoces AirPods -200,0 | Realtek -200,0 | virtual -200,0
+  t=28,8s tras cambiar a altavoces AirPods -200,0 | Realtek -200,0 | virtual  -55,6
+  t=33,0s tras cambiar a altavoces AirPods -200,0 | Realtek  -34,9 | virtual -200,0
+
+[T2] Un cambio Altavoces -> AirPods:
+  t= 3,5s tras cambiar a AirPods AirPods -200,0 | Realtek -200,0 | virtual -200,0
+  t= 7,6s tras cambiar a AirPods AirPods -200,0 | Realtek -200,0 | virtual -200,0
+  t=11,5s tras cambiar a AirPods AirPods -200,0 | Realtek -200,0 | virtual -200,0
+  t=15,3s tras cambiar a AirPods AirPods -200,0 | Realtek -200,0 | virtual -200,0
+  t=19,1s tras cambiar a AirPods AirPods -200,0 | Realtek -200,0 | virtual -200,0
+  t=23,0s tras cambiar a AirPods AirPods -200,0 | Realtek -200,0 | virtual -200,0
+  t=26,9s tras cambiar a AirPods AirPods -200,0 | Realtek -200,0 | virtual -200,0
+  t=30,8s tras cambiar a AirPods AirPods -200,0 | Realtek -200,0 | virtual -200,0
+
+[T3] Reproductor NUEVO despues de un cambio (altavoces):
+  t= 2,8s reproductor nuevo      AirPods -200,0 | Realtek  -10,5 | virtual  -20,8
+
+Listo (salida final: AirPods).

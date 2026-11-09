@@ -1,0 +1,44 @@
+Estado inicial: power=True salida=Auriculares (AirPods Pro de Juan) preset=Volume Boost
+
+[A] Referencia plana: Auriculares (AirPods Pro de Juan) | 2 ch 48000 Hz | L -28.5 dBFS  R -28.5 dBFS  | 100 Hz -30.3 dB | 1000 Hz -30.3 dB | 8000 Hz -30.3 dB 
+
+[A1] Ecualizador (cambio respecto a plano):
+  banda 1 (101 Hz) +12               100 Hz   +12,0 | 1 kHz    +0,2 | 8 kHz     0,0 dB
+  banda 1 (101 Hz) -12               100 Hz   -12,0 | 1 kHz    -0,2 | 8 kHz     0,0 dB
+  banda 5 (1 kHz) +12                100 Hz    +0,1 | 1 kHz    +9,0 | 8 kHz    +0,5 dB
+  banda 5 (1 kHz) -12                100 Hz    -0,1 | 1 kHz    -9,0 | 8 kHz    -0,5 dB
+  banda 8 (8 kHz) +12                100 Hz     0,0 | 1 kHz    +0,4 | 8 kHz   +12,0 dB
+  banda 8 (8 kHz) -12                100 Hz     0,0 | 1 kHz    -0,4 | 8 kHz   -12,0 dB
+
+[A2] Efectos 0 -> 10:
+  efecto bass = 10                   100 Hz   +13,9 | 1 kHz    +0,2 | 8 kHz     0,0 dB
+  efecto clarity = 10                100 Hz    -0,1 | 1 kHz    -2,3 | 8 kHz    +9,2 dB
+  efecto ambience = 10               100 Hz    +0,6 | 1 kHz    -2,0 | 8 kHz    -1,2 dB
+  efecto surround = 10               100 Hz    -2,1 | 1 kHz    -2,1 | 8 kHz    -2,1 dB
+  efecto dynamicboost = 10           100 Hz   +11,6 | 1 kHz   +11,6 | 8 kHz   +11,6 dB
+
+[A3] Ganancia maestra (tonos bajos, sin limitador):
+  master -20 dB                      100 Hz   -20,0 | 1 kHz   -20,0 | 8 kHz   -20,0 dB
+  master -10 dB                      100 Hz   -10,0 | 1 kHz   -10,0 | 8 kHz   -10,0 dB
+  master 10 dB                       100 Hz   +10,0 | 1 kHz   +10,0 | 8 kHz   +10,0 dB
+  master 20 dB                       100 Hz   +20,3 | 1 kHz   +20,3 | 8 kHz   +20,3 dB
+
+[A4] Balance (L / R respecto a plano, dB):
+  balance  -20: Auriculares (AirPods Pro de Juan) | 2 ch 48000 Hz | L -28.5 dBFS  R -48.5 dBFS  | 100 Hz -35.5 dB | 1000 Hz -35.5 dB | 8000 Hz -35.5 dB 
+  balance   20: Auriculares (AirPods Pro de Juan) | 2 ch 48000 Hz | L -48.5 dBFS  R -28.5 dBFS  | 100 Hz -35.5 dB | 1000 Hz -35.5 dB | 8000 Hz -35.5 dB 
+
+[A5] Apagado y encendido (bypass):
+  power=0: Auriculares (AirPods Pro de Juan) | 2 ch 48000 Hz | L -200.0 dBFS  R -200.0 dBFS  | 100 Hz -240.0 dB | 1000 Hz -240.0 dB | 8000 Hz -240.0 dB 
+  power=1: Auriculares (AirPods Pro de Juan) | 2 ch 48000 Hz | L -200.0 dBFS  R -200.0 dBFS  | 100 Hz -240.0 dB | 1000 Hz -240.0 dB | 8000 Hz -240.0 dB 
+
+[B] Musica simulada, referencia plana: L -21,0 dBFS
+  master  -10 dB ->   -10,2 dB respecto a 0 dB
+  master    0 dB ->    -0,1 dB respecto a 0 dB
+  master    6 dB ->    +5,9 dB respecto a 0 dB
+  master   12 dB ->   +11,7 dB respecto a 0 dB
+  master   20 dB ->   +12,9 dB respecto a 0 dB
+  con Refuerzo dinamico = 10:
+  master    0 dB ->    +0,3 dB
+  master   12 dB ->   +11,9 dB
+
+Ajustes restaurados.
