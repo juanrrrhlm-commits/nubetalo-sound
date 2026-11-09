@@ -614,7 +614,9 @@ FxSettingsDialog::HelpSettingsPane::HelpSettingsPane() :
 	copy_row_(FxSettingRow::Kind::Link, "Copy system information", "To paste it in an email or a report"),
 	donate_row_(FxSettingRow::Kind::Link, "Donate", "PayPal"),
 	license_row_(FxSettingRow::Kind::Link, "License", "GNU Affero General Public License v3"),
-	notices_row_(FxSettingRow::Kind::Link, "Third-party notices", "FxSound, JUCE and IBM Plex Sans")
+	notices_row_(FxSettingRow::Kind::Link, "Third-party notices", "FxSound, JUCE and IBM Plex Sans"),
+	update_row_(FxSettingRow::Kind::Link, "Check for updates", ""),
+	auto_update_row_(FxSettingRow::Kind::Switch, "Check automatically")
 {
 	mail_row_.onClick = []() { FxSupport::openMail("Ayuda"); };
 	bug_row_.onClick = []() { FxSupport::openMail("Problema", true); };
@@ -633,8 +635,33 @@ FxSettingsDialog::HelpSettingsPane::HelpSettingsPane() :
 	license_row_.onClick = [openDoc]() { openDoc("LICENSE.txt"); };
 	notices_row_.onClick = [openDoc]() { openDoc("NOTICE.txt"); };
 
-	for (auto* c : { &mail_row_, &bug_row_, &copy_row_, &donate_row_, &license_row_, &notices_row_ })
+	auto_update_row_.setOn(FxController::getInstance().getAutoUpdates());
+	auto_update_row_.onClick = [this]() { FxController::getInstance().setAutoUpdates(auto_update_row_.isOn()); };
+	update_row_.onClick = [this]() {
+		auto& c = FxController::getInstance();
+		if (c.getUpdateStatus() == "available" && c.getUpdateUrl().isNotEmpty())
+			URL(c.getUpdateUrl()).launchInDefaultBrowser();
+		else
+			c.checkUpdates(true);
+		refreshUpdateRow();
+	};
+	poll_.cb = [this]() { refreshUpdateRow(); };
+	poll_.startTimer(700);
+	refreshUpdateRow();
+
+	for (auto* c : { &mail_row_, &bug_row_, &copy_row_, &donate_row_, &license_row_, &notices_row_, &update_row_, &auto_update_row_ })
 		addAndMakeVisible(c);
+}
+
+void FxSettingsDialog::HelpSettingsPane::refreshUpdateRow()
+{
+	auto& c = FxController::getInstance();
+	const auto st = c.getUpdateStatus();
+	if (st == "checking")        update_row_.setSubtitle(TRANS("Looking for updates..."));
+	else if (st == "available")  update_row_.setSubtitle(TRANS("Version %s is available. Click to download").replace("%s", c.getUpdateVersion()));
+	else if (st == "latest")     update_row_.setSubtitle(TRANS("You have the latest version"));
+	else if (st == "error")      update_row_.setSubtitle(TRANS("Could not check for updates"));
+	else                         update_row_.setSubtitle(TRANS("Click to check now"));
 }
 
 void FxSettingsDialog::HelpSettingsPane::resized()
@@ -647,13 +674,13 @@ void FxSettingsDialog::HelpSettingsPane::resized()
 	int y = 12 + HEADER_H + 14;
 	section_y_ = y; y += SECTION_H;
 	int y0 = y;
-	for (auto* r : { &mail_row_, &bug_row_, &copy_row_ })
+	for (auto* r : { &mail_row_, &bug_row_, &copy_row_, &update_row_ })
 	{
 		r->setBounds(col_x_[0], y, col_w, ROW_H + 8);
 		y += ROW_H + 8 + GAP;
 	}
 	y = y0;
-	for (auto* r : { &donate_row_, &license_row_, &notices_row_ })
+	for (auto* r : { &donate_row_, &license_row_, &notices_row_, &auto_update_row_ })
 	{
 		r->setBounds(col_x_[1], y, col_w, ROW_H + 8);
 		y += ROW_H + 8 + GAP;

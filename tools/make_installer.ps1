@@ -3,7 +3,7 @@
 $ErrorActionPreference = 'Stop'
 $root = Split-Path $PSScriptRoot -Parent
 $iscc = Join-Path $env:LOCALAPPDATA 'Programs\Inno Setup 6\ISCC.exe'
-$ver  = '1.0.0'
+$ver  = '1.0.1'
 
 Copy-Item (Join-Path $root 'app\LICENSE') (Join-Path $root 'LICENSE.txt') -Force
 New-Item -ItemType Directory -Force (Join-Path $root 'installer\output'), (Join-Path $root 'installer\assets') | Out-Null

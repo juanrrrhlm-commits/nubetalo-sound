@@ -14,7 +14,7 @@ namespace FxSupport
 	inline String versionText()
 	{
 		auto* app = JUCEApplication::getInstance();
-		return app != nullptr ? app->getApplicationVersion() : String("1.0.0");
+		return app != nullptr ? app->getApplicationVersion() : String("1.0.1");
 	}
 
 	// Datos útiles para el soporte; no incluye nombres de dispositivos ni rutas personales.

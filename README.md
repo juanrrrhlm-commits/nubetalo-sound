@@ -24,7 +24,7 @@ Los altavoces del portátil suenan planos y los auriculares baratos no tienen gr
 | 🎧 **Cambio automático de dispositivo** | Conectas tus auriculares y el sonido se pasa solo a ellos. Probado con AirPods Pro reales. |
 | 💾 **Preajustes por dispositivo** | Un sonido para los auriculares y otro para los altavoces. Importa y exporta los tuyos. |
 | ⌨ **Atajos de teclado** | `Ctrl+Alt+N` enciende o apaga, `Ctrl+Alt+P` cambia de preajuste. Puedes redefinirlos. |
-| 🔒 **Privado** | No envía nada a internet. [Política de privacidad](PRIVACY.md). |
+| 🔒 **Privado** | Sin telemetría. Solo consulta en GitHub si hay una versión nueva (se puede desactivar). [Política de privacidad](PRIVACY.md). |
 | 🌍 **Más de 20 idiomas** | Español, inglés, portugués, francés, alemán, japonés, coreano, chino, árabe y más. |
 
 <p align="center">
@@ -33,7 +33,7 @@ Los altavoces del portátil suenan planos y los auriculares baratos no tienen gr
 </p>
 
 ## Instalación (1 minuto)
-1. Descarga **`NubetaloSound-Setup-1.0.0.exe`** desde [Releases](../../releases/latest).
+1. Descarga **`NubetaloSound-Setup-1.0.1.exe`** desde [Releases](../../releases/latest).
 2. Ábrelo y sigue el asistente. Pide permisos de administrador porque instala un **dispositivo de audio virtual** (así Windows puede enviar el sonido a la app).
 3. Abre Nubetalo Sound, enciende el interruptor y elige un preajuste.
 
@@ -64,7 +64,7 @@ Requisitos: Windows 10 u 11 de 64 bits.
 **Algo falla.** Escribe a **juanrrrhlm@gmail.com** con el asunto `[Nubetalo Sound Soporte]` (o desde *Ajustes → Soporte → Reportar un problema*, que añade la versión de Windows sin datos personales) o abre un *issue* en este repositorio.
 
 ## Seguridad y privacidad
-- No hay telemetría, cuentas ni conexiones a internet. Lo único que sale del equipo es lo que tú envíes a soporte.
+- No hay telemetría ni cuentas. La única conexión es la consulta de versión nueva en GitHub (sin enviar datos tuyos, se puede desactivar). Lo demás que sale del equipo es lo que tú envíes a soporte.
 - Los presets importados se validan (tamaño y nombre) para que un archivo malicioso no pueda escribir fuera de su carpeta. Hay pruebas en `tools/dsp_test`.
 - El ejecutable usa DEP, ASLR de alta entropía y Control Flow Guard.
 - Informes de seguridad: [SECURITY.md](SECURITY.md).

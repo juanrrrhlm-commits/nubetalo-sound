@@ -6,13 +6,13 @@ Escribe a **juanrrrhlm@gmail.com** con el asunto `[Nubetalo Sound Soporte] Segur
 ## Versiones con soporte
 Solo la versión más reciente publicada.
 
-## Qué se ha revisado (versión 1.0.0)
+## Qué se ha revisado (versión 1.0.1)
 Revisión propia del código y pruebas locales sobre la app:
 
 | Área | Resultado |
 |---|---|
 | Secretos, claves o credenciales en el código | Ninguno. Solo el correo de soporte, que es público a propósito. |
-| Conexiones de red | Ninguna iniciada por la app. Se eliminaron la consulta de anuncios, el actualizador y la encuesta heredados. |
+| Conexiones de red | Una sola: consulta de solo lectura a la última release en GitHub (desactivable). No descarga ni ejecuta nada. Se eliminaron los anuncios, el actualizador y la encuesta heredados. |
 | Procesos externos | Se eliminó el lanzamiento de `updater.exe` desde la carpeta de trabajo. |
 | Archivos de preajuste malformados (vacíos, binarios, 3 MB en una línea, valores extremos) | Se corrigió un bloqueo de la app con una línea gigante; ahora se descartan los archivos de más de 64 KB. |
 | Nombres de preajuste con rutas (`..\..\x`) | Se corrigió: una importación podía escribir un archivo fuera de la carpeta de presets. Ahora se rechazan nombres con rutas, caracteres reservados o nombres de dispositivo de Windows. |

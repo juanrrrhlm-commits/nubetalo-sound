@@ -1,6 +1,6 @@
 ﻿; Instalador de Nubetalo Sound. Compilar con tools\make_installer.ps1 (genera antes el zip de fuentes y las imágenes).
 #define AppName "Nubetalo Sound"
-#define AppVersion "1.0.0"
+#define AppVersion "1.0.1"
 #define AppExe "NubetaloSound.exe"
 #define Root ".."
 #define Bin "..\app\bin\x64"

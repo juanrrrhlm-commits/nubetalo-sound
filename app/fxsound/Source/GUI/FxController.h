@@ -172,7 +172,11 @@ public:
 
 	bool getAutoUpdates();
 	void setAutoUpdates(bool enable);
-	void checkUpdates();
+	void checkUpdates(bool manual = false);
+	void scheduleUpdateCheck(int delay_ms);
+	String getUpdateVersion() const { return update_version_; }
+	String getUpdateUrl() const { return update_url_; }
+	String getUpdateStatus() const { return update_status_; }   // "", "checking", "latest", "available", "error"
 
 	void saveWindowPosition(int x, int y);
 	void getWindowPosition(int& x, int& y);
@@ -285,6 +289,7 @@ private:
     bool hide_help_tooltips_;
 	bool hide_notifications_;
 	bool auto_updates_;
+	String update_version_, update_url_, update_status_;
 
 	unsigned long audio_process_time_;
 	int audio_process_on_counter_;

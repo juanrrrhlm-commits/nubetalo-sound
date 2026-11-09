@@ -23,6 +23,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "FxMainWindow.h"
 #include "FxSystemTrayView.h"
 #include "FxSupport.h"
+#include "FxUpdater.h"
 #include "FxMessage.h"
 #include "../Utils/SysInfo/SysInfo.h"
 #include <iostream>
@@ -192,6 +193,7 @@ FxController::FxController() : message_window_(L"NubetaloSoundHotkeys", (WNDPROC
 	hide_help_tooltips_ = settings_.getBool("hide_help_tooltips");
 	hide_notifications_ = settings_.getBool("hide_notifications");
 	auto_updates_ = settings_.getBool("automatic_updates", true);
+	scheduleUpdateCheck(30 * 1000);   // 30 s después de abrir, para no frenar el arranque
 	max_user_presets_ = settings_.getInt("max_user_presets");
 	if (max_user_presets_ < 10 || max_user_presets_ > 120)
 	{
@@ -2627,9 +2629,55 @@ void FxController::setAutoUpdates(bool enable)
 	settings_.setBool("automatic_updates", enable);
 }
 
-void FxController::checkUpdates()
+void FxController::checkUpdates(bool manual)
 {
-	// Nubetalo Sound no se actualiza solo ni abre procesos externos.
+	// Solo consulta si hay una versión nueva (ver FxUpdater.h). Nunca descarga ni ejecuta nada por su cuenta.
+	if (!manual && !auto_updates_)
+		return;
+	if (update_status_ == "checking")
+		return;
+
+	update_status_ = "checking";
+	String current = ProjectInfo::versionString;
+#ifndef NUBETALO_RELEASE
+	// Developer aid: FXSOUND_FAKEVER=0.9.0 simulates an older version to see the update notice.
+	if (SystemStats::getEnvironmentVariable("FXSOUND_FAKEVER", "").isNotEmpty())
+		current = SystemStats::getEnvironmentVariable("FXSOUND_FAKEVER", "");
+#endif
+	FxUpdater::check(current, [this, manual](FxUpdater::Result r) {
+		if (!r.ok)
+		{
+			update_status_ = "error";
+			if (manual)
+				FxModel::getModel().pushMessage(TRANS("Could not check for updates"));
+		}
+		else if (r.newer)
+		{
+			update_status_ = "available";
+			update_version_ = r.version;
+			update_url_ = r.url;
+			// avisa una vez por versión (siempre que el usuario lo pida a mano)
+			if (manual || settings_.getString("update_notified") != r.version)
+			{
+				settings_.setString("update_notified", r.version);
+				FxModel::getModel().pushMessage(FormatString(TRANS("Version %s is available"), r.version), { TRANS("Download"), r.url });
+			}
+		}
+		else
+		{
+			update_status_ = "latest";
+			if (manual)
+				FxModel::getModel().pushMessage(TRANS("You have the latest version"));
+		}
+	});
+}
+
+void FxController::scheduleUpdateCheck(int delay_ms)
+{
+	Timer::callAfterDelay(delay_ms, [this]() {
+		checkUpdates();
+		scheduleUpdateCheck(24 * 60 * 60 * 1000);   // una vez al día mientras la app siga abierta
+	});
 }
 
 void FxController::saveWindowPosition(int x, int y)

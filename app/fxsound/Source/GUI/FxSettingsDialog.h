@@ -181,6 +181,10 @@ private:
 		FxSettingRow donate_row_;
 		FxSettingRow license_row_;
 		FxSettingRow notices_row_;
+		FxSettingRow update_row_;
+		FxSettingRow auto_update_row_;
+		void refreshUpdateRow();
+		struct Poll : Timer { std::function<void()> cb; void timerCallback() override { if (cb) cb(); } } poll_;
 		int section_y_ = 0;
 		int col_x_[2] = { 0, 0 };
 	};

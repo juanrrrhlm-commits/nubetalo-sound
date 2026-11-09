@@ -2,7 +2,7 @@
 import os, sys, zipfile
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-VER = sys.argv[1] if len(sys.argv) > 1 else '1.0.0'
+VER = sys.argv[1] if len(sys.argv) > 1 else '1.0.1'
 OUT = os.path.join(ROOT, 'installer', 'output', f'Nubetalo-Sound-{VER}-source.zip')
 
 TOP_FILES = ['README.md', 'LICENSE.txt', 'NOTICE.txt', 'PRIVACY.md', 'SECURITY.md']

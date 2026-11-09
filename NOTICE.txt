@@ -1,4 +1,4 @@
-NUBETALO SOUND 1.0.0 - AVISOS LEGALES Y DE TERCEROS
+NUBETALO SOUND 1.0.1 - AVISOS LEGALES Y DE TERCEROS
 ====================================================
 
 Nubetalo Sound
@@ -29,12 +29,13 @@ Modificaciones principales (2026, Nubetalo):
     (el controlador del dispositivo virtual ya no se reescribe sin necesidad).
   - Límite de potencia configurable, atajos de teclado editables, selector de
     idioma, espectro en tiempo real (FFT) y presets nuevos.
-  - Eliminación de las conexiones a servicios externos (actualizaciones,
-    anuncios, encuestas) y del lanzamiento de procesos auxiliares.
+  - Sustitución del actualizador, los anuncios y las encuestas de FxSound por
+    un aviso de versión nueva de solo lectura (sin descargas automáticas) y
+    eliminación del lanzamiento de procesos auxiliares.
   - Validación de nombres y tamaño de los archivos de preajuste.
 
 Los fuentes completos de esta versión se entregan con el instalador, en la
-carpeta "source" del programa (archivo Nubetalo-Sound-1.0.0-source.zip).
+carpeta "source" del programa (archivo Nubetalo-Sound-1.0.1-source.zip).
 
 
 2. MARCAS
