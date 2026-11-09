@@ -55,7 +55,6 @@ Requisitos: Windows 10 u 11 de 64 bits.
 
 **Se oye distorsionado o muy fuerte.** Baja el control de *Potencia* o el límite de potencia en *Ajustes → Audio*. Un preajuste con muchos graves a +30 dB puede saturar altavoces pequeños.
 
-**El nombre del dispositivo dice "FxSound".** El dispositivo virtual de audio lo creó el proyecto FxSound y su nombre va dentro de un controlador firmado que no podemos modificar sin romper la firma. Es el mismo controlador, no hay nada oculto. Se puede ver y quitar en el Administrador de dispositivos.
 
 **Los auriculares Bluetooth no se activan solos.** Mira que *Ajustes → Audio → Priorizar nuevos dispositivos de salida* esté marcado (viene activado).
 
@@ -86,4 +85,4 @@ tools\make_installer.ps1   # instalador (necesita Inno Setup 6)
 ```
 
 ## Apoya el proyecto
-Si te gusta, comparte la app o [dona un café](https://www.paypal.com/donate/?business=juan.rodriguez.roman777%40gmail.com&currency_code=USD&item_name=Nubetalo+Sound). Lo recaudado se usará, por este orden, en la firma de código (para que Windows deje de avisar) y en un controlador de audio propio.
+Si te gusta, comparte la app o [dona un café](https://www.paypal.com/donate/?business=juan.rodriguez.roman777%40gmail.com&currency_code=USD&item_name=Nubetalo+Sound). Lo recaudado se usará, por este orden, en la firma de código (para que Windows deje de avisar).
